@@ -12,18 +12,18 @@ spring:
       - id: PRODUCT_MS
         uri: lb://PRODUCT_MS #lb-->Load Balancing
         predicates:
-        - path=/product_ms/**  # if multiple controller then  - path=/product/**, /xyz/**
+        - Path=/product_ms/**  # if multiple controller then  - path=/product/**, /xyz/**
         
       - id: CATEGORY_MS
         uri: lb://CATEGORY_MS 
         predicates:
-        - path=/category_ms/** 
+        - Path=/category_ms/** 
       
       
       - id: SUPPLIER_MS
         uri: lb://SUPPLIER_MS 
         predicates:
-        - path=/supplier_ms/** 
+        - Path=/supplier_ms/** 
           
 eureka:
   client:
