@@ -1,0 +1,37 @@
+server:
+  port: 9999
+  
+# Application Name And Routing
+spring:
+  application:
+    name: API_GATEWAY
+    
+  cloud:
+    gateway:
+      routes:
+      - id: PRODUCT_MS
+        uri: lb://PRODUCT_MS #lb-->Load Balancing
+        predicates:
+        - path=/product_ms/**  # if multiple controller then  - path=/product/**, /xyz/**
+        
+      - id: CATEGORY_MS
+        uri: lb://CATEGORY_MS 
+        predicates:
+        - path=/category_ms/** 
+      
+      
+      - id: SUPPLIER_MS
+        uri: lb://SUPPLIER_MS 
+        predicates:
+        - path=/supplier_ms/** 
+          
+eureka:
+  client:
+    register-with-eureka: true # no need to write as in PRODUCT SUPPLIER AND CATEGORY not writted <used to tell where to registered this i.e in eureka server>
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+        
