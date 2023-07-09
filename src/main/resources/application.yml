@@ -1,27 +1,27 @@
 server:
-  port: 9999
+  port: 9191 
   
 # Application Name And Routing
 spring:
   application:
     name: API_GATEWAY
-    
+  
   cloud:
     gateway:
       routes:
-      - id: PRODUCT_MS
-        uri: lb://PRODUCT_MS #lb-->Load Balancing
+      - id: PRODUCT-MS
+        uri: lb://PRODUCT-MS
         predicates:
-        - Path=/product_ms/**  # if multiple controller then  - path=/product/**, /xyz/**
-        
-      - id: CATEGORY_MS
-        uri: lb://CATEGORY_MS 
+          - Path=/product_ms/**
+  
+      - id: CATEGORY-MS
+        uri: lb://CATEGORY-MS 
         predicates:
         - Path=/category_ms/** 
       
       
-      - id: SUPPLIER_MS
-        uri: lb://SUPPLIER_MS 
+      - id: SUPPLIER-MS
+        uri: lb://SUPPLIER-MS 
         predicates:
         - Path=/supplier_ms/** 
           
